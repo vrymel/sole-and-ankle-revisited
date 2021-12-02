@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components/macro';
 
-import { COLORS } from '../../constants';
+import {BREAKPOINTS, COLORS} from '../../constants';
 
 import SearchInput from '../SearchInput';
 import UnstyledButton from '../UnstyledButton';
@@ -10,14 +10,16 @@ import Icon from '../Icon';
 const SuperHeader = () => {
   return (
     <Wrapper>
-      <MarketingMessage>
-        Free shipping on domestic orders over $75!
-      </MarketingMessage>
-      <SearchInput />
-      <HelpLink href="/help">Help</HelpLink>
-      <UnstyledButton>
-        <Icon id="shopping-bag" strokeWidth={1} />
-      </UnstyledButton>
+      <MainWrapper>
+        <MarketingMessage>
+          Free shipping on domestic orders over $75!
+        </MarketingMessage>
+        <SearchInput/>
+        <HelpLink href="/help">Help</HelpLink>
+        <UnstyledButton>
+          <Icon id="shopping-bag" strokeWidth={1}/>
+        </UnstyledButton>
+      </MainWrapper>
     </Wrapper>
   );
 };
@@ -32,6 +34,17 @@ const Wrapper = styled.div`
   height: 40px;
   padding-left: 32px;
   padding-right: 32px;
+
+  @media (max-width: ${BREAKPOINTS.tablet}px) {
+    border-bottom: ${COLORS.gray['900']} 4px solid;
+    height: 0;
+  }
+`;
+
+const MainWrapper = styled.div`
+  @media (max-width: ${BREAKPOINTS.tablet}px) {
+    display: none;
+  }
 `;
 
 const MarketingMessage = styled.span`

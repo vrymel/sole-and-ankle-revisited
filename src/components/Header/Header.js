@@ -1,10 +1,11 @@
 import React from 'react';
 import styled from 'styled-components/macro';
 
-import {COLORS, WEIGHTS} from '../../constants';
+import {BREAKPOINTS, COLORS, WEIGHTS} from '../../constants';
 import Logo from '../Logo';
 import SuperHeader from '../SuperHeader';
 import MobileMenu from '../MobileMenu';
+import Icon from '../Icon';
 
 const Header = () => {
   const [showMobileMenu, setShowMobileMenu] = React.useState(false);
@@ -16,10 +17,10 @@ const Header = () => {
 
   return (
     <header>
-      <SuperHeader />
+      <SuperHeader/>
       <MainHeader>
         <Side>
-          <Logo />
+          <Logo/>
         </Side>
         <Nav>
           <NavLink href="/sale">Sale</NavLink>
@@ -29,8 +30,21 @@ const Header = () => {
           <NavLink href="/kids">Kids</NavLink>
           <NavLink href="/collections">Collections</NavLink>
         </Nav>
-        <Side />
+        <Side/>
       </MainHeader>
+
+      <MobileHeader>
+        <Side>
+          <Logo/>
+        </Side>
+        <MobileNav>
+          <Icon id="shopping-bag"/>
+          <Icon id="search"/>
+          <MobileMenuButton onClick={() => setShowMobileMenu(true)}>
+            <Icon id="menu"/>
+          </MobileMenuButton>
+        </MobileNav>
+      </MobileHeader>
 
       <MobileMenu
         isOpen={showMobileMenu}
@@ -46,12 +60,43 @@ const MainHeader = styled.div`
   padding: 18px 32px;
   height: 72px;
   border-bottom: 1px solid ${COLORS.gray[300]};
+
+  @media (max-width: ${BREAKPOINTS.tablet}px) {
+    display: none;
+  }
+`;
+
+const MobileHeader = styled(MainHeader)`
+  display: none;
+
+  @media (max-width: ${BREAKPOINTS.tablet}px) {
+    display: flex;
+  }
+`;
+
+const MobileMenuButton = styled.button`
+  background: transparent;
+  border: none;
 `;
 
 const Nav = styled.nav`
   display: flex;
   gap: 48px;
   margin: 0px 48px;
+`;
+
+const MobileNav = styled(Nav)`
+  display: none;
+  margin: 0;
+
+  @media (max-width: ${BREAKPOINTS.tablet}px) {
+    display: flex;
+    gap: 40px;
+  }
+
+  @media (max-width: ${BREAKPOINTS.phone}px) {
+    gap: 23px;
+  }
 `;
 
 const Side = styled.div`

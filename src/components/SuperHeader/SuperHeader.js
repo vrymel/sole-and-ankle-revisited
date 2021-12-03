@@ -25,6 +25,13 @@ const SuperHeader = () => {
 };
 
 const Wrapper = styled.div`
+  @media (max-width: ${BREAKPOINTS.tablet}px) {
+    border-bottom: ${COLORS.gray['900']} 4px solid;
+    height: 0;
+  }
+`;
+
+const MainWrapper = styled.div`
   display: flex;
   align-items: center;
   gap: 24px;
@@ -34,14 +41,7 @@ const Wrapper = styled.div`
   height: 40px;
   padding-left: 32px;
   padding-right: 32px;
-
-  @media (max-width: ${BREAKPOINTS.tablet}px) {
-    border-bottom: ${COLORS.gray['900']} 4px solid;
-    height: 0;
-  }
-`;
-
-const MainWrapper = styled.div`
+  
   @media (max-width: ${BREAKPOINTS.tablet}px) {
     display: none;
   }

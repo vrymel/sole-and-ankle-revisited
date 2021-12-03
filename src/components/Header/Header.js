@@ -38,8 +38,12 @@ const Header = () => {
           <Logo/>
         </Side>
         <MobileNav>
-          <Icon id="shopping-bag"/>
-          <Icon id="search"/>
+          <MobileMenuButton>
+            <Icon id="shopping-bag"/>
+          </MobileMenuButton>
+          <MobileMenuButton>
+            <Icon id="search"/>
+          </MobileMenuButton>
           <MobileMenuButton onClick={() => setShowMobileMenu(true)}>
             <Icon id="menu"/>
           </MobileMenuButton>

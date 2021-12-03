@@ -9,23 +9,25 @@ import Spacer from '../Spacer';
 import ShoeSidebar from '../ShoeSidebar';
 import ShoeGrid from '../ShoeGrid';
 
-const ShoeIndex = ({ sortId, setSortId }) => {
+const ShoeIndex = ({sortId, setSortId}) => {
   return (
     <Wrapper>
       <MainColumn>
         <Header>
           <Title>Running</Title>
-          <Select
-            label="Sort"
-            value={sortId}
-            onChange={(ev) => setSortId(ev.target.value)}
-          >
-            <option value="newest">Newest Releases</option>
-            <option value="price">Price</option>
-          </Select>
+          <SelectWrapper>
+            <Select
+              label="Sort"
+              value={sortId}
+              onChange={(ev) => setSortId(ev.target.value)}
+            >
+              <option value="newest">Newest Releases</option>
+              <option value="price">Price</option>
+            </Select>
+          </SelectWrapper>
         </Header>
-        <Spacer size={32} />
-        <ShoeGrid />
+        <Spacer size={32}/>
+        <ShoeGrid/>
       </MainColumn>
       <LeftColumn>
         <Breadcrumbs>
@@ -36,8 +38,8 @@ const ShoeIndex = ({ sortId, setSortId }) => {
           </Breadcrumbs.Crumb>
         </Breadcrumbs>
         <ShoeSidebarWrapper>
-          <Spacer size={42} />
-          <ShoeSidebar />
+          <Spacer size={42}/>
+          <ShoeSidebar/>
         </ShoeSidebarWrapper>
       </LeftColumn>
     </Wrapper>
@@ -49,9 +51,15 @@ const Wrapper = styled.div`
   flex-direction: row-reverse;
   align-items: baseline;
   gap: 32px;
-  
+
   @media (max-width: ${BREAKPOINTS.tablet}px) {
     flex-direction: column-reverse;
+  }
+`;
+
+const SelectWrapper = styled.div`
+  @media (max-width: ${BREAKPOINTS.phone}px) {
+    display: none;
   }
 `;
 
@@ -63,7 +71,7 @@ const ShoeSidebarWrapper = styled.div`
 
 const LeftColumn = styled.div`
   flex-basis: 248px;
-  
+
   @media (max-width: ${BREAKPOINTS.tablet}px) {
     flex-basis: initial;
   }
